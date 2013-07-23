@@ -1,0 +1,90 @@
+/* CSS Document */
+body {
+	font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+	font-size: .8em;
+	background: #0E2D5F;
+}
+
+#container
+{
+	margin: 0 auto;
+	width: 948px;
+	background:#fff;
+}
+
+#header
+{
+	background-image:url(../img/header.jpg);
+	/*background:#FFFFFF;*/
+	height: 292px;
+}
+
+#logo{
+	background-repeat:no-repeat;
+	height:110px;
+	width:400px;
+}
+
+#header h1 { margin: 0; }
+
+#navigation
+{
+	float: left;
+	width: 800px;
+	background:#333;
+}
+
+#navigation ul
+{
+	margin: 0;
+	padding: 0;
+}
+
+#navigation ul li
+{
+	list-style-type: none;
+	display: inline;
+}
+
+#navigation li a
+{
+	display: block;
+	float: left;
+	padding: 5px 10px;
+	color:#fff;
+	text-decoration: none;
+	border-right: 1px solid#fff;
+}
+
+#navigation li a:hover { background:#383; }
+
+#content
+{
+	clear: left;
+	padding: 20px;
+	margin-top: 10px;
+}
+
+#content h2
+{
+	color:#000;
+	font-size: 160%;
+	margin: 0 0 .5em;
+}
+
+#sFoot
+{
+	background:black;
+	text-align: right;
+	padding: 10px;
+	height: 1%;
+}
+
+#footer
+{
+	background:#819FF7;
+	text-align: right;
+	padding: 10px;
+	height: 1%;
+}
+
