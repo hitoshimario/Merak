@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.merak.entity.PaketPerawatan;
 import com.merak.entity.Pelanggan;
@@ -36,7 +37,7 @@ public class PelangganPaketPerawatanController {
 	
 	//LIST PelangganPaketPerawatan
 	@RequestMapping("pelangganPaketPerawatan/list")
-	public String listPelangganPaketPerawatan(@ModelAttribute Pelanggan pelanggan, ModelMap modelMap){
+	public String list(@ModelAttribute Pelanggan pelanggan, ModelMap modelMap){
 		
 		List<PelangganPaketPerawatan> pelangganPaketPerawatan = pelangganPaketPerawatanService.listPelangganPaketPerawatan();
 		modelMap.put("pelangganPaketPerawatan", pelangganPaketPerawatan);
@@ -52,7 +53,7 @@ public class PelangganPaketPerawatanController {
 	
 	//ADD PelangganPaketPerawatan
 	@RequestMapping(value = "pelangganPaketPerawatan/add", method = RequestMethod.GET)
-	public String addPelangganPaketPerawatan(@ModelAttribute Pelanggan pelanggan, ModelMap modelMap) {
+	public String add(@ModelAttribute Pelanggan pelanggan, ModelMap modelMap) {
 
 		List<PaketPerawatan> paketPerawatan = paketPerawatanService.listPaketPerawatan();
 		modelMap.put("paketPerawatan",paketPerawatan);
@@ -65,7 +66,7 @@ public class PelangganPaketPerawatanController {
 	
 	//SAVE PelangganPaketPerawatan
 	@RequestMapping(value = "pelangganPaketPerawatan/add", method = RequestMethod.POST)
-	public String savePelangganPaketPerawatan(@ModelAttribute PelangganPaketPerawatan pelangganPaketPerawatan, BindingResult result) {
+	public String save(@ModelAttribute PelangganPaketPerawatan pelangganPaketPerawatan, BindingResult result) {
 		
 		int idPelanggan = Integer.parseInt(result.getFieldValue("pelanggan").toString());
 		Pelanggan pelanggan = pelangganService.getPelangganById(idPelanggan);
@@ -77,48 +78,14 @@ public class PelangganPaketPerawatanController {
 		pelangganPaketPerawatan.setPaketPerawatan(paketPerawatan);
 				
 		pelangganPaketPerawatanService.save(pelangganPaketPerawatan);
-		return "redirect:list?id="+idPelanggan+"";
+		return "redirect:list?id="+idPelanggan;
 	}
-	
-	/*//FIND BY ID : Pelanggan Paket Perawatan
-	@RequestMapping(value = "pelangganPaketPerawatan/detail", method = RequestMethod.GET)
-	public String openPelangganPaketPerawatan(@ModelAttribute PelangganPaketPerawatan pelangganPaketPerawatan, ModelMap modelMap) {
 		
-		//buat ambil data dari table pelanggan
-		List<Pelanggan> pelanggan = pelangganService.listPelanggan();
-		modelMap.put("pelanggan", pelanggan);
-		
-		//buat ambil data dari table paket perawatan
-		List<PaketPerawatan> paketPerawatan = paketPerawatanService.listPaketPerawatan();
-		modelMap.put("paketPerawatan", paketPerawatan);
-		
-		pelangganPaketPerawatan = pelangganPaketPerawatanService.getPelangganPaketPerawatanById(pelangganPaketPerawatan.getId());
-		modelMap.put("pelangganPaketPerawatan", pelangganPaketPerawatan);
-		return "/master/produk/detail";
-	}
-	
-	//UPDATE Pelanggan Paket Perawatan
-	@RequestMapping(value = "pelangganPaketPerawatan/detail", method = RequestMethod.POST)
-	public String updatePelangganPaketPerawatan(@ModelAttribute PelangganPaketPerawatan pelangganPaketPerawatan, BindingResult result) {
-			
-		int idPelanggan = Integer.parseInt(result.getFieldValue("pelanggan").toString());
-		Pelanggan pelanggan = pelangganService.getPelangganById(idPelanggan);
-			
-		int idPaketPerawatan = Integer.parseInt(result.getFieldValue("paketPerawatan").toString());
-		PaketPerawatan paketPerawatan = paketPerawatanService.getPaketPerawatanById(idPaketPerawatan);
-
-		pelangganPaketPerawatan.setPelanggan(pelanggan);
-		pelangganPaketPerawatan.setPaketPerawatan(paketPerawatan);
-
-		pelangganPaketPerawatanService.save(pelangganPaketPerawatan);
-		return "redirect:list";
-	}*/
-	
 	//DELETE Pelanggan Paket Perawatan
 	@RequestMapping(value = "pelangganPaketPerawatan/delete")
-	public String deletePelangganPaketPerawatan(@ModelAttribute PelangganPaketPerawatan pelangganPaketPerawatan){
+	public String delete(@ModelAttribute PelangganPaketPerawatan pelangganPaketPerawatan, @RequestParam("idPlg")int idPlg){
 		pelangganPaketPerawatanService.delete(pelangganPaketPerawatan);
-		return "redirect:list";
+		return "redirect:list?id="+idPlg;
 	}
 	
 }

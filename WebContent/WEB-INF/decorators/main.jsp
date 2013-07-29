@@ -12,21 +12,26 @@
 	<link type="text/css" href='<c:url value = "/resources/css/bootstrap.css"/>' rel="stylesheet" />
 	<link type="text/css" href='<c:url value = "/resources/menu_assets/styles.css"/>' rel="stylesheet" />
 	<decorator:head/>
+	<script type="text/javascript">
+		window.history.forward();
+		function noBack() { window.history.forward(); }
+	</script>
 </head>
-<body>
+<body onload="noBack();" onpageshow="if (event.persisted) noBack();" onunload="">
 	<div id="container">
 		<div id="header">
         	<div id="logo"></div>
 		</div>
 		<div id='cssmenu'>
 			<ul>
-				<li class='active '><a href="<c:url value="/"/>"><span>Home</span></a></li>
+				<li class='active '><a href="<c:url value="/master/home"/>"><span>Home</span></a></li>
 			   	<li class='has-sub '><a href='#'><span>Master</span></a>
 					<ul>
 						<li><a href="<c:url value="/master/kategori/list"/>"><span>Kategori</span></a></li>
 					 	<li><a href="<c:url value="/master/satuan/list"/>"><span>Satuan</span></a></li>
 					 	<li><a href="<c:url value="/master/alat/list"/>"><span>Alat</span></a></li>
 					 	<li><a href="<c:url value="/master/produk/list"/>"><span>Produk</span></a></li>
+					 	<li><a href="<c:url value="/master/paketPerawatan/list"/>"><span>Paket Perawatan</span></a></li>
 				  	</ul>
 				</li>
 			   	<li class='has-sub '><a href='#'><span>Master User</span></a>
@@ -36,16 +41,15 @@
 					 	<li><a href="<c:url value="/master/suster/list"/>"><span>Suster</span></a></li>
 					 	<li><a href="<c:url value="/master/distributor/list"/>"><span>Distributor</span></a></li>
 					</ul>
-				<li class='has-sub '><a href='#'><span>Perawatan</span></a>
-					<ul>
-					 	<li><a href="<c:url value="/master/paketPerawatan/list"/>"><span>Paket Perawatan</span></a></li>
-					 	<li><a href="<c:url value="/master/perawatan/list"/>"><span>Perawatan</span></a></li>
-					</ul>
+				</li>
 				<li class='has-sub '><a href='#'><span>Transaksi</span></a>
 					<ul>
 					 	<li><a href="<c:url value="/master/po/list"/>"><span>PO</span></a></li>
-					 	<li><a href="<c:url value="/master/poHistori/list"/>"><span>PO. Histori</span></a></li>
+					 	<li><a href="<c:url value="/master/po/listLaporanPo"/>"><span>PO. Histori</span></a></li>
+					 	<li><a href="<c:url value="/master/stok/list"/>"><span>Stok</span></a></li>
 					</ul>
+				</li>
+				<li class='active '><a href="<c:url value="/j_spring_security_logout" />" ><span>Logout</span></a></li>
 			</ul>
 		</div>
 		<div id="content">

@@ -32,7 +32,7 @@ public class PaketPerawatanController {
 	
 	//LIST Paket Perawatan
 	@RequestMapping("paketPerawatan/list")
-	public String listPaketPerawatan(ModelMap modelMap){
+	public String list(ModelMap modelMap){
 		List<PaketPerawatan> paketPerawatan = paketPerawatanService.listPaketPerawatan();
 		modelMap.put("paketPerawatan", paketPerawatan);
 		return "/master/paketPerawatan/list";
@@ -40,7 +40,7 @@ public class PaketPerawatanController {
 	
 	//ADD Paket Perawatan
 	@RequestMapping(value = "paketPerawatan/add")
-	public String addPaketPerawatan(ModelMap modelMap) {
+	public String add(ModelMap modelMap) {
 		
 		List<Produk> produk = produkService.listProduk();
 		modelMap.put("produk", produk);
@@ -53,7 +53,7 @@ public class PaketPerawatanController {
 	
 	//SAVE Paket Perawatan
 	@RequestMapping(value = "paketPerawatan/add", method = RequestMethod.POST)
-	public String savePaketPerawatan(@ModelAttribute PaketPerawatan paketPerawatan, BindingResult result) {
+	public String save(@ModelAttribute PaketPerawatan paketPerawatan, BindingResult result) {
 		
 		String[] produkList = result.getFieldValue("produk").toString().split(",");
 		String[] alatList = result.getFieldValue("alat").toString().split(",");
@@ -94,7 +94,7 @@ public class PaketPerawatanController {
 	
 	// FIND BY ID : Paket Perawatan
 	@RequestMapping(value = "paketPerawatan/detail", method = RequestMethod.GET)
-	public String openPaketPerawatan(@ModelAttribute PaketPerawatan paketPerawatan, ModelMap modelMap) {
+	public String open(@ModelAttribute PaketPerawatan paketPerawatan, ModelMap modelMap) {
 		
 		List<Produk> produk = produkService.listProduk();
 		modelMap.put("produk", produk);
@@ -109,7 +109,7 @@ public class PaketPerawatanController {
 	
 	// UPDATE Paket Perawatan
 	@RequestMapping(value = "paketPerawatan/detail", method = RequestMethod.POST)
-	public String updatePaketPerawatan(@ModelAttribute PaketPerawatan paketPerawatan, BindingResult result) {
+	public String update(@ModelAttribute PaketPerawatan paketPerawatan, BindingResult result) {
 		
 		String[] produkList = result.getFieldValue("produk").toString().split(",");
 		String[] alatList = result.getFieldValue("alat").toString().split(",");
@@ -132,7 +132,7 @@ public class PaketPerawatanController {
 	
 	//DELETE Paket Perawatan
 	@RequestMapping(value = "paketPerawatan/delete")
-	public String deletePaketPerawatan(@ModelAttribute PaketPerawatan paketPerawatan){
+	public String delete(@ModelAttribute PaketPerawatan paketPerawatan){
 		paketPerawatanService.delete(paketPerawatan);
 		return "redirect:list";
 	}

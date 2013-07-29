@@ -2,24 +2,17 @@ package com.merak.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "pelanggan")
-@org.hibernate.annotations.Entity(dynamicUpdate=true)
 public class Pelanggan implements Serializable {
 
 	/**
@@ -63,13 +56,6 @@ public class Pelanggan implements Serializable {
 	@OneToMany(mappedBy="pelanggan")
 	private Set<PelangganPaketPerawatan> pelangganPaketPerawatan;
 	
-	//ke table paket Perawatan
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "pelanggan_paket_perawatan",
-				joinColumns = {@JoinColumn(name = "id_pelanggan")},
-				inverseJoinColumns = {@JoinColumn(name = "id_paket_perawatan")})
-	private Set<PaketPerawatan> paketPerawatan = new HashSet<PaketPerawatan>();
-
 	public Integer getId() {
 		return id;
 	}
@@ -159,12 +145,4 @@ public class Pelanggan implements Serializable {
 		this.pelangganPaketPerawatan = pelangganPaketPerawatan;
 	}
 
-	public Set<PaketPerawatan> getPaketPerawatan() {
-		return paketPerawatan;
-	}
-
-	public void setPaketPerawatan(Set<PaketPerawatan> paketPerawatan) {
-		this.paketPerawatan = paketPerawatan;
-	}
-	
 }

@@ -21,7 +21,7 @@ public class SatuanController {
 	
 	//LIST Satuan
 	@RequestMapping("satuan/list")
-	public String listSatuan(ModelMap modelMap){
+	public String list(ModelMap modelMap){
 		List<Satuan> satuan = satuanService.listSatuan();
 		modelMap.put("satuan", satuan);
 		return "/master/satuan/list";
@@ -29,7 +29,7 @@ public class SatuanController {
 	
 	//ADD Satuan
 	@RequestMapping(value = "satuan/add")
-	public String addSatuan() {
+	public String add() {
 		return "/master/satuan/add";
 	}
 	
@@ -42,7 +42,7 @@ public class SatuanController {
 	
 	// FIND BY ID : Satuan
 	@RequestMapping(value = "satuan/detail", method = RequestMethod.GET)
-	public String openSatuan(@ModelAttribute Satuan satuan, ModelMap modelMap) {
+	public String open(@ModelAttribute Satuan satuan, ModelMap modelMap) {
 		satuan = satuanService.getSatuanById(satuan.getId());
 		modelMap.put("satuan", satuan);
 		return "/master/satuan/detail";
@@ -50,14 +50,14 @@ public class SatuanController {
 		
 	// UPDATE Satuan
 	@RequestMapping(value = "satuan/detail", method = RequestMethod.POST)
-	public String updateSatuan(@ModelAttribute Satuan satuan) {
+	public String update(@ModelAttribute Satuan satuan) {
 		satuanService.save(satuan);
 		return "redirect:list";
 	}
 	
 	//DELETE Satuan
 	@RequestMapping(value = "satuan/delete")
-	public String deleteSatuan(@ModelAttribute Satuan satuan){
+	public String delete(@ModelAttribute Satuan satuan){
 		satuanService.delete(satuan);
 		return "redirect:list";
 	}

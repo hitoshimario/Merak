@@ -25,18 +25,20 @@ public class Alat implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private Integer id;
+	private int id;
 	
 	@Column(name = "nama_alat")
 	private String namaAlat;
 	
 	@Column(name = "jml_alat")
-	private Integer jmlAlat;
+	private int jmlAlat;
 	
+	//relasi ke table satuan
 	@ManyToOne
 	@JoinColumn(name="id_satuan")
 	private Satuan satuan;
 	
+	//relasi ke table paket perawatan
 	@ManyToMany(mappedBy = "alat")
     private Set<PaketPerawatan> paketPerawatan = new HashSet<PaketPerawatan>();
 	
