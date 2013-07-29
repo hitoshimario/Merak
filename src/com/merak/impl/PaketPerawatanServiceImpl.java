@@ -29,10 +29,7 @@ public class PaketPerawatanServiceImpl implements PaketPerawatanService {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<PaketPerawatan> listPaketPerawatan() {
-//		return sessionFactory.getCurrentSession().createQuery("FROM PaketPerawatan").list();
-		List<PaketPerawatan> paketPerawatan = sessionFactory.getCurrentSession().
-				createQuery("SELECT DISTINCT(pp) FROM PaketPerawatan pp left join fetch pp.produk p left join fetch pp.alat a").list();
-		return paketPerawatan;
+		return sessionFactory.getCurrentSession().createQuery("SELECT DISTINCT(pp) FROM PaketPerawatan pp left join fetch pp.produk p left join fetch pp.alat a").list();
 	}
 
 	@Override
@@ -44,11 +41,8 @@ public class PaketPerawatanServiceImpl implements PaketPerawatanService {
 	public PaketPerawatan getPaketPerawatanById(int id) {
 //		return (PaketPerawatan) sessionFactory.getCurrentSession().get(PaketPerawatan.class, id);
 		return (PaketPerawatan) sessionFactory.getCurrentSession().
-				createQuery("FROM PaketPerawatan pp left join fetch pp.produk p left join fetch pp.alat a WHERE pp.id = :id").setParameter("id", id).uniqueResult();
-		/*List<PaketPerawatan> paketPerawatan = sessionFactory.getCurrentSession().
 				createQuery("FROM PaketPerawatan pp left join fetch pp.produk p left join fetch pp.alat a WHERE pp.id = :id").
-				setParameter("id", id).list();
-		return paketPerawatan;*/
+				setParameter("id", id).uniqueResult();
 	}
 
 }

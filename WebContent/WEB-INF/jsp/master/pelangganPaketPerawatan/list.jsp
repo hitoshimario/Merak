@@ -36,7 +36,7 @@
 		<table class="display" id="example">
 			<thead>
 				<tr>
-					<th>Id Pelanggan Paket</th>
+					<th>Id</th>
 					<th>Nama Paket</th>
 					<th>Durasi</th>
 					<th>Harga</th>
@@ -46,11 +46,11 @@
 			<tbody>
 				<c:forEach var="pelangganPaketPerawatan" items="${pelangganPaketPerawatan}">
 				<tr class="gradeB">
-					<td align="center">${pelangganPaketPerawatan.id}</td>
-					<td align="center"><a href="<c:url value="/master/perawatan/list?id=${pelanggan.id}"/>">${pelangganPaketPerawatan.paketPerawatan.getNamaPaketPerawatan()}</a></td>
+					<td align="center">${pelangganPaketPerawatan.getId()}</td>
+					<td align="center"><a href="<c:url value="/master/perawatan/list?id=${pelangganPaketPerawatan.getId()}"/>">${pelangganPaketPerawatan.paketPerawatan.getNamaPaketPerawatan()}</a></td>
 					<td align="center">${pelangganPaketPerawatan.paketPerawatan.getDurasi()}</td>
 					<td align="center">${pelangganPaketPerawatan.paketPerawatan.getHarga()}</td>
-					<td align="center"><a href="<c:url value="/master/pelangganPaketPerawatan/delete?id=${pelangganPaketPerawatan.id}"/>" onClick="return confirmDelete()"><i class="icon-remove"></i></a></td>
+					<td align="center"><a href="<c:url value="/master/pelangganPaketPerawatan/delete?id=${pelangganPaketPerawatan.id}&idPlg=${pelanggan.id}"/>" onClick="return confirmDelete()"><i class="icon-remove"></i></a></td>
 				</tr>
 				</c:forEach>
 			</tbody>

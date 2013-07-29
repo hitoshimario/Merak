@@ -11,54 +11,58 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.merak.entity.Dokter;
 import com.merak.service.DokterService;
+import com.merak.util.IdGenerator;
 
 @Controller
 @RequestMapping(value="master/*")
 public class DokterController {
-
-	@Autowired
-	private DokterService dokterService;
 	
-	//List Dokter
+	@Autowired
+	protected DokterService dokterService;
+	
+	//LIST Dokter
 	@RequestMapping("dokter/list")
-	public String listDokter(ModelMap modelMap){
+	public String list(ModelMap modelMap){
 		List<Dokter> dokter = dokterService.listDokter();
 		modelMap.put("dokter", dokter);
 		return "/master/dokter/list";
 	}
 	
-	//Add Dokter
+	//ADD Dokter
 	@RequestMapping(value = "dokter/add")
-	public String addDokter(){
-		return "/master/dokter/list";
+	public String add(ModelMap modelMap) {
+		IdGenerator idGenerator = new IdGenerator();
+		modelMap.put("idGenerator", idGenerator.getNipDokter());
+		return "/master/dokter/add";
 	}
 	
-	//Save Dokter
-	@RequestMapping(value="dokter/add", method = RequestMethod.POST)
-	public String saveDokter(@ModelAttribute Dokter dokter){
+	//SAVE Dokter
+	@RequestMapping(value = "dokter/add", method = RequestMethod.POST)
+	public String save(@ModelAttribute Dokter dokter) {
 		dokterService.save(dokter);
 		return "redirect:list";
 	}
 	
-	//Find Dokter
-	@RequestMapping(value="dokter/detail", method = RequestMethod.GET)
-	public String openDokter(@ModelAttribute Dokter dokter, ModelMap modelMap){
+	//FIND BY ID : Dokter
+	@RequestMapping(value = "dokter/detail", method = RequestMethod.GET)
+	public String open(@ModelAttribute Dokter dokter, ModelMap modelMap) {
 		dokter = dokterService.getDokterById(dokter.getId());
 		modelMap.put("dokter", dokter);
 		return "/master/dokter/detail";
 	}
 	
-	//Update Dokter
+	// UPDATE Dokter
 	@RequestMapping(value = "dokter/detail", method = RequestMethod.POST)
-	public String updateDokter(@ModelAttribute Dokter dokter) {
+	public String update(@ModelAttribute Dokter dokter) {
 		dokterService.save(dokter);
 		return "redirect:list";
 	}
 	
-	//DELETE Dokter
+	//DELETE Pelanggan
 	@RequestMapping(value = "dokter/delete")
-	public String deleteDokter(@ModelAttribute Dokter dokter){
+	public String delete(@ModelAttribute Dokter dokter){
 		dokterService.delete(dokter);
 		return "redirect:list";
 	}
+	
 }

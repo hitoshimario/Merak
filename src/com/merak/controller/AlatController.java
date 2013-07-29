@@ -27,7 +27,7 @@ public class AlatController {
 	
 	//LIST Alat
 	@RequestMapping("alat/list")
-	public String listAlat(ModelMap modelMap){
+	public String list(ModelMap modelMap){
 		List<Alat> alat = alatService.listAlat();
 		modelMap.put("alat", alat);
 		return "/master/alat/list";
@@ -35,7 +35,7 @@ public class AlatController {
 	
 	//ADD Alat
 	@RequestMapping(value = "alat/add")
-	public String addAlat(ModelMap modelMap) {
+	public String add(ModelMap modelMap) {
 			
 		//buat ambil data dari table satuan
 		List<Satuan> satuan = satuanService.listSatuan();
@@ -46,7 +46,7 @@ public class AlatController {
 	
 	//SAVE Alat
 	@RequestMapping(value = "alat/add", method = RequestMethod.POST)
-	public String saveAlat(@ModelAttribute Alat alat, BindingResult result) {
+	public String save(@ModelAttribute Alat alat, BindingResult result) {
 		int idSatuan = Integer.parseInt(result.getFieldValue("satuan").toString());
 		Satuan s = satuanService.getSatuanById(idSatuan);
 			
@@ -55,9 +55,9 @@ public class AlatController {
 		return "redirect:list";
 	}
 	
-	// FIND BY ID : Produk
+	// FIND BY ID : Alat
 	@RequestMapping(value = "alat/detail", method = RequestMethod.GET)
-	public String openAlat(@ModelAttribute Alat alat, ModelMap modelMap) {
+	public String open(@ModelAttribute Alat alat, ModelMap modelMap) {
 			
 		//buat ambil data dari table satuan
 		List<Satuan> satuan = satuanService.listSatuan();
@@ -70,7 +70,7 @@ public class AlatController {
 	
 	// UPDATE Alat
 	@RequestMapping(value = "alat/detail", method = RequestMethod.POST)
-	public String updateAlat(@ModelAttribute Alat alat, BindingResult result) {
+	public String update(@ModelAttribute Alat alat, BindingResult result) {
 			
 		int idSatuan = Integer.parseInt(result.getFieldValue("satuan").toString());
 		Satuan s = satuanService.getSatuanById(idSatuan);
@@ -81,9 +81,9 @@ public class AlatController {
 		return "redirect:list";
 	}
 	
-	//DELETE Produk
+	//DELETE Alat
 	@RequestMapping(value = "alat/delete")
-	public String deleteAlat(@ModelAttribute Alat alat){
+	public String delete(@ModelAttribute Alat alat){
 		alatService.delete(alat);
 		return "redirect:list";
 	}

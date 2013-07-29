@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Add Paket Perawatan</title>
 <link type="text/css" href='<c:url value = "/resources/css/validasi.css"/>' rel="stylesheet" />
-<script type="text/javascript" src='<c:url value="/resources/script/jquery/jquery-1.8.3.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/script/jquery/jquery.validate.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/script/jquery/jquery-ui-1.9.2.custom.js.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/resources/js/jquery-1.8.3.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/resources/js/jquery.validate.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/resources/js/jquery-ui-1.9.2.custom.js.js"/>'></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#tambahData').validate({
@@ -135,7 +135,7 @@
 			</div>
 			<div class="control-group">
 				<div class="controls">
-					<button class="btn btn-small" type="submit">Add Paket</button>
+					<button class="btn btn-small" type="submit">Add Paket Perawatan</button>
 				</div>
 			</div>
 		</form>
