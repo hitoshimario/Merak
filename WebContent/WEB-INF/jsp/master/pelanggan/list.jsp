@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Pelanggan</title>
 <link type="text/css" href='<c:url value = "/resources/css/demo_table.css"/>' rel="stylesheet" />
-<script type="text/javascript" src='<c:url value="/resources/js/jquery-1.8.3.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/js/jquery.dataTables.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/resources/script/jquery/jquery-1.8.3.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/resources/script/jquery/jquery.dataTables.js"/>'></script>
 <!-- Paging Table -->
 <script type="text/javascript" charset="utf-8">
 			$(document).ready(function() {

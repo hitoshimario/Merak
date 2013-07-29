@@ -3,24 +3,17 @@
 		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
 		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
-        
-        <mapping class="com.merak.entity.Satuan"/>
-        <mapping class="com.merak.entity.Kategori"/>
-        <mapping class="com.merak.entity.Produk"/>
-        <mapping class="com.merak.entity.Alat"/>
-        <mapping class="com.merak.entity.Pelanggan"/>
-        <mapping class="com.merak.entity.Dokter"/>
-        <mapping class="com.merak.entity.Suster"/>
-        <mapping class="com.merak.entity.Perawatan"/>
-        <mapping class="com.merak.entity.PaketPerawatan"/>
-        <mapping class="com.merak.entity.PelangganPaketPerawatan"/>
-        <mapping class="com.merak.entity.RekamMedik"/>
-        <mapping class="com.merak.entity.RekamMedik"/>
-        <mapping class="com.merak.entity.Distributor"/>
-        <mapping class="com.merak.entity.Po"/>
-        <mapping class="com.merak.entity.PoDetail"/>
-        <mapping class="com.merak.entity.Stok"/>
-    </session-factory>
+	<session-factory>
+		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
+		<mapping class="com.merak.entity.Pelanggan" />
+		<mapping class="com.merak.entity.Dokter" />
+		<mapping class="com.merak.entity.Suster" />
+		<mapping class="com.merak.entity.Perawatan" />
+		<mapping class="com.merak.entity.PaketPerawatan" />
+		<mapping class="com.merak.entity.PelangganPaketPerawatan" />
+		<mapping class="com.merak.entity.Satuan" />
+		<mapping class="com.merak.entity.Kategori" />
+		<mapping class="com.merak.entity.Produk" />
+		<mapping class="com.merak.entity.Alat" />
+	</session-factory>
 </hibernate-configuration>

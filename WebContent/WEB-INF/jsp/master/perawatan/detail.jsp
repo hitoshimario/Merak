@@ -5,134 +5,50 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Perawatan</title>
-<link type="text/css" href='<c:url value = "/resources/css/validasi.css"/>' rel="stylesheet" />
-<link type="text/css" href='<c:url value = "/resources/css/ui.all.css"/>' rel="stylesheet" />
-
-<script type="text/javascript" src='<c:url value="/resources/js/jquery-1.8.3.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/js/jquery.validate.js"/>'></script>
+<title>Detail Paket Perawatan</title>
+<script type="text/javascript" src='<c:url value="/resources/js/jquery-1.8.3.js"/>'></script> 
 <script type="text/javascript" src='<c:url value="/resources/js/jquery-ui-1.9.2.custom.js.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/js/ui.core.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/js/ui.datepicker.js"/>'></script>
-
-<script type="text/javascript">
-	$(document).ready(function(){
-		$("#tglPerawatan").datepicker({dateFormat: 'yy-mm-dd', changeMonth: true, changeYear: true});
-	});
-</script>
-
-<script type="text/javascript">
-	var counter=0;
-	$(document).ready(function(){
-		$("#addDokter").click(function(){
-			$("#dokterAppend").append("<br/><select id='dokter' name='dokter'>"+
-					"<option value=''>--Pilih Dokter--</option>"+renderOptions()+"</select>");
-			counter++;
-		});
-		
-		function renderOptions(){
-			var options = "";
-			<c:forEach var="dokter" items="${dokter}">
-				options += "<option value='${dokter.id}'>${dokter.namaAwal}</option>";
-			</c:forEach>
-			return options;
-		}
-	});
-</script>
-<script type="text/javascript">
-	var counter=0;
-	$(document).ready(function(){
-		$("#addSuster").click(function(){
-			$("#susterAppend").append("<br/><select id='suster' name='suster'>"+
-					"<option value=''>--Pilih Suster--</option>"+renderOptions()+"</select>");
-			counter++;
-		});
-		
-		function renderOptions(){
-			var options = "";
-			<c:forEach var="suster" items="${suster}">
-				options += "<option value='${suster.id}'>${suster.namaAwal}</option>";
-			</c:forEach>
-			return options;
-		}
-	});
-</script>
-
 </head>
 <body>
-	<form class="form-horizontal" id="tambahData" name="form" action="<c:url value="add"/>" method="post">
-		<fieldset>
-			<legend>Perawatan</legend>
-				<div class="control-group">
-					<label class="control-label">Id</label>
-					<div class="controls">
-						  <input type="text" id="id" name="id" value="${perawatan.id}" readonly="readonly" />
-					</div>
+	<fieldset>
+		<legend>Detail Perawatan</legend>
+		<form class="form-horizontal" name="form" action="<c:url value="detail"/>" method="post">
+			<div class="control-group">
+				<label class="control-label">Id</label>
+				<div class="controls">
+					  <input type="text" id="id" name="id" value="${perawatan.id}" readonly="readonly" />
 				</div>
-				<div class="control-group">
-					<label class="control-label">Tanggal Perawatan</label>
-					<div class="controls">
-						  <input type="text" id="tglPerawatan" name="tglPerawatan" value="${perawatan.tglPerawatan}" readonly="readonly" />
-					</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Tgl Perawatan</label>
+				<div class="controls">
+					<input type="text" id="tglPerawatan" name="tglPerawatan" value="${perawatan.tglPerawatan}" />
 				</div>
-				<div class="control-group">
-					<label class="control-label">Dokter</label>
-					<c:forEach var="perawatanDokter" items="${perawatan.dokter}">
-					<div id="dokterAppend" class="controls">
-						<select id="dokter" name="dokter" >
-							<option value="">--Pilih Dokter--</option>
-								<c:forEach var="dokter" items="${dokter}">
-									<option value="${dokter.id}" ${dokter.id == perawatanDokter.id ? 'selected' : ''}>${dokter.namaAwal}</option>
-								</c:forEach>
-						</select>
-						<button id="addDokter" class="btn btn-small" type="button">Add Dokter</button>
-					</div>
-					</c:forEach>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Jam Mulai</label>
+				<div class="controls">
+					  <input type="text" id="jamMulai" name="jamMulai" value="${perawatan.jamMulai}" />
 				</div>
-				<div class="control-group">
-					<label class="control-label">Suster</label>
-					<c:forEach var="perawatanSuster" items="${perawatan.suster}">
-					<div id="susterAppend" class="controls">
-						<select id="suster" name="suster" >
-							<option value="">--Pilih Suster--</option>
-								<c:forEach var="suster" items="${suster}">
-									<option value="${suster.id}" ${suster.id == perawatanSuster.id ? 'selected' : ''}>${suster.namaAwal}</option>
-								</c:forEach>
-						</select>
-						<button id="addSuster" class="btn btn-small" type="button">Add Suster</button>
-					</div>
-					</c:forEach>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Jam Akhir</label>
+				<div class="controls">
+					  <input type="text" id="jamAkhir" name="jamAkhir" value="${perawatan.jamAkhir}" />
 				</div>
-				<div class="control-group">
-					<label class="control-label">Mulai</label>
-					<div class="controls">
-						  <input type="text" id="jamMulai" name="jamMulai" value="${perawatan.jamMulai}" />
-					</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label">Visit Ke</label>
+				<div class="controls">
+					  <input type="text" id="visitKe" name="visitKe" value="${perawatan.visitKe}" readonly="readonly"/>
 				</div>
-				<div class="control-group">
-					<label class="control-label">Akhir</label>
-					<div class="controls">
-						  <input type="text" id="jamAkhir" name="jamAkhir" value="${perawatan.jamAkhir}" />
-					</div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<button class="btn btn-small" type="submit">Update Perawatan</button>
 				</div>
-				<div class="control-group">
-					<label class="control-label">Visit Ke</label>
-					<div class="controls">
-						  <input type="text" id="visitKe" name="visitKe" value="${perawatan.visitKe}" readonly="readonly" />
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Id Pelanggan Paket Perawatan</label>
-					<div class="controls">
-						  <input type="text" id="pelangganPaketPerawatan" name="pelangganPaketPerawatan" value="${perawatan.pelangganPaketPerawatan.getId()}" readonly="readonly" />
-					</div>
-				</div>
-				<div class="control-group">
-					<div class="controls">
-						<button class="btn btn-small" type="submit">Update Perawatan</button>
-					</div>
-				</div>
-		</fieldset>
-	</form>
+			</div>
+		</form>
+	</fieldset>
 </body>
 </html>

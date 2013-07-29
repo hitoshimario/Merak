@@ -25,9 +25,9 @@
 <body>
 	<form class="form-horizontal" id="tambahData" name="form" action="<c:url value="add"/>" method="post">
 		<fieldset>
-			<legend>Detail Pelanggan</legend>
+			<legend>Paket Pelanggan</legend>
 				<div class="control-group">
-					<label class="control-label">Id</label>
+					<label class="control-label">Nomor Pelanggan</label>
 					<div class="controls">
 						  <input type="text" id="pelanggan" name="pelanggan" value="${pelanggan.id}" readonly="readonly" />
 					</div>

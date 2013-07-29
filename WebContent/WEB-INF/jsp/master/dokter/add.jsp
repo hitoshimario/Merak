@@ -9,11 +9,11 @@
 <link type="text/css" href='<c:url value = "/resources/css/validasi.css"/>' rel="stylesheet" />
 <link type="text/css" href='<c:url value = "/resources/css/ui.all.css"/>' rel="stylesheet" />
 
-<script type="text/javascript" src='<c:url value="/resources/js/jquery-1.8.3.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/js/jquery.validate.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/js/jquery-ui-1.9.2.custom.js.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/js/ui.core.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/js/ui.datepicker.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/resources/script/jquery/jquery-1.8.3.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/resources/script/jquery/jquery.validate.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/resources/script/jquery/jquery-ui-1.9.2.custom.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/resources/script/jquery/ui.core.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/resources/script/jquery/ui.datepicker.js"/>'></script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -64,9 +64,9 @@
 		<fieldset>
 			<legend>Add Dokter</legend>
 				<div class="control-group">
-					<label class="control-label">Nip Dokter</label>
+					<label class="control-label">Nomor Dokter</label>
 					<div class="controls">
-						  <input type="text" id="nipDokter" name="nipDokter" value="${idGenerator}" readonly="readonly" />
+						  <input type="text" id="nipDokter" name="nipDokter" /><%-- value="${idGenerator}" --%> <!-- readonly="readonly" -->
 					</div>
 				</div>
 				<div class="control-group">
@@ -116,11 +116,6 @@
 					<label class="control-label">Email</label>
 					<div class="controls">
 						  <input type="text" id="email" name="email" />
-					</div>
-				</div>
-				<div class="control-group">
-					<div class="controls">
-						<button class="btn btn-small" type="submit">Add Dokter</button>
 					</div>
 				</div>
 		</fieldset>

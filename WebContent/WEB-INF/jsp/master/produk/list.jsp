@@ -38,7 +38,6 @@
 					<th>Id</th>
 					<th>Nama Produk</th>
 					<th>Jumlah Produk</th>
-					<th>Harga</th>
 					<th>Satuan</th>
 					<th>Kategori</th>
 					<th>Update</th>
@@ -51,7 +50,6 @@
 					<td align="center">${produk.id}</td>
 					<td align="center">${produk.namaProduk}</td>
 					<td align="center">${produk.jmlProduk}</td>
-					<td align="center">${produk.harga}</td>
 					<td align="center">${produk.satuan}</td>
 					<td align="center">${produk.kategori}</td>
 					<td align="center"><a href="<c:url value="/master/produk/detail?id=${produk.id}"/>"><i class="icon-pencil"></i></a></td>

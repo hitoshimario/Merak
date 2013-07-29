@@ -27,11 +27,6 @@ public class Satuan implements Serializable {
 	@Column(name="nama_satuan")
 	private String namaSatuan;
 	
-	//relasi ke table alat
-	@OneToMany(mappedBy="satuan")
-	private Set<Alat> alat;
-	
-	//relasi ke table produk
 	@OneToMany(mappedBy="satuan")
 	private Set<Produk> produk;
 	
@@ -39,7 +34,7 @@ public class Satuan implements Serializable {
 	public Satuan() {
 		
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -54,14 +49,6 @@ public class Satuan implements Serializable {
 
 	public void setNamaSatuan(String namaSatuan) {
 		this.namaSatuan = namaSatuan;
-	}
-
-	public Set<Alat> getAlat() {
-		return alat;
-	}
-
-	public void setAlat(Set<Alat> alat) {
-		this.alat = alat;
 	}
 
 	public Set<Produk> getProduk() {

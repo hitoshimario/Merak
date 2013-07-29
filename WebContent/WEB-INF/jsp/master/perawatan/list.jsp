@@ -7,16 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Perawatan</title>
 <link type="text/css" href='<c:url value = "/resources/css/demo_table.css"/>' rel="stylesheet" />
-<script type="text/javascript" src='<c:url value="/resources/js/jquery-1.8.3.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/js/jquery.dataTables.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/resources/script/jquery/jquery-1.8.3.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/resources/script/jquery/jquery.dataTables.js"/>'></script>
 <!-- Paging Table -->
-<script type="text/javascript" charset="utf-8">
+<!-- <script type="text/javascript" charset="utf-8">
 			$(document).ready(function() {
 				$('#example').dataTable( {
 					"sPaginationType": "full_numbers"
 				} );
 			} );
-		</script>
+		</script> -->
 <!-- EndPagging -->
 <!-- ConfirmationDelete -->
 <script type="text/javascript">
@@ -29,54 +29,51 @@
 <body>
 	<fieldset>
 		<legend>Perawatan</legend>
-		<a href="<c:url value="/master/perawatan/add?id=${pelangganPaketPerawatan.id}"/>">
+		<a href="<c:url value="/master/perawatan/add"/>">
 			<button class="btn btn-small" type="button">Add Perawatan</button>
 		</a>
 		<div style="margin:15px 0;"></div>
-		<h5>Nama Pelanggan : ${pelangganPaketPerawatan.pelanggan.getNamaAwal()} ${pelangganPaketPerawatan.pelanggan.getNamaAkhir()}</h5>
-		<h5>Paket Perawatan : ${pelangganPaketPerawatan.paketPerawatan.getNamaPaketPerawatan()}</h5>
-		<div style="margin:15px 0;"></div>
-		<table class="display" id="example">
-			<thead>
+		<table class="display"><!--  id="example" -->
 				<tr>
-					<th>Id</th>
-					<th>Tanggal</th>
-					<th>Dokter</th>
-					<th>Suster</th>
-					<th>Mulai</th>
-					<th>Selesai</th>
-					<th>Visit</th>
-					<th>Update</th>
-					<th>Delete</th>
-				</tr>
-			</thead>
-			<tbody>
-				<c:forEach var="perawatan" items="${perawatan}">
-				<tr class="gradeB">
-					<td align="center">${perawatan.id}</td>
-					<td align="center"><a href="<c:url value="/master/rekamMedik/list?id=${perawatan.id}"/>">${perawatan.tglPerawatan}</a></td>
 					<td>
-						<ul>
-						<c:forEach var="dokter" items="${perawatan.dokter}">
-							<li>${dokter.namaAwal}</li>
-						</c:forEach>
-						</ul>
+					<table>
+						<tr>
+							<td>Nama Pelanggan :  ${pelanggan.namaAwal} ${pelanggan.namaAkhir}</td>
+						<tr>
+						<tr>
+							<td>Nama Paket : ${paketPerawatan.namaPaketPerawatan}</td>
+						</tr>
+					</table>
 					</td>
-					<td>
-						<ul>
-						<c:forEach var="suster" items="${perawatan.suster}">
-							<li>${suster.namaAwal}</li>
-						</c:forEach>
-						</ul>
-					</td>
-					<td align="center">${perawatan.jamMulai}</td>
-					<td align="center">${perawatan.jamAkhir}</td>
-					<td align="center">${perawatan.visitKe}</td>
-					<td align="center"><a href="<c:url value="/master/perawatan/detail?id=${perawatan.id}"/>"><i class="icon-pencil"></i></a></td>
-					<td align="center"><a href="<c:url value="/master/perawatan/delete?id=${perawatan.id}&idPpp=${pelangganPaketPerawatan.id}"/>" onClick="return confirmDelete()"><i class="icon-remove"></i></a></td>
-				</tr>
+				</tr>			
+			<tr>
+			<td>tanggal</td>
+			<td>Mulai</td>
+			<td>Selesai</td>
+			<td>Dokter</td>
+			<td>Suster</td>
+			</tr>
+			<c:forEach var="perawatan" items="${perawatan}">
+			<tr>
+				<td>${perawatan.tglPerawatan}</td>
+				<td>${perawatan.jamMulai}</td>
+				<td>${perawatan.jamAkhir}</td>
+				<td>
+				<ul>
+				<c:forEach var="dokter" items="${dokter}">
+				<li>${dokter.namaAwal}</li>
 				</c:forEach>
-			</tbody>
+				</ul>
+				</td>
+				<td>
+				<ul>
+				<c:forEach var="suster" items="${suster}">
+				<li>${suster.namaAwal}</li>
+				</c:forEach>
+				</ul>
+				</td>
+			</tr>
+			</c:forEach>
 		</table>
 	</fieldset>
 </body>

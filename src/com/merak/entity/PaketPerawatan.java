@@ -19,44 +19,36 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "paket_perawatan")
 public class PaketPerawatan implements Serializable {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue
-	@Column(name="id")
+	@Column(name = "id")
 	private Integer id;
-	
-	@Column(name="nama_paket_perawatan")
+
+	@Column(name = "nama_paket_perawatan")
 	private String namaPaketPerawatan;
-	
-	@Column(name="harga")
-	private Integer harga;
-	
-	@Column(name="durasi")
+
+	@Column(name = "harga")
+	private Double harga;
+
+	@Column(name = "durasi")
 	private String durasi;
 
-	//ke table produk
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "paket_perawatan_produk",
-				joinColumns = {@JoinColumn(name = "id_paket_perawatan")},
-				inverseJoinColumns = {@JoinColumn(name = "id_produk")})
+	@JoinTable(name = "paket_perawatan_produk", joinColumns = { @JoinColumn(name = "id_paket_perawatan") }, inverseJoinColumns = { @JoinColumn(name = "id_produk") })
 	private Set<Produk> produk = new HashSet<Produk>();
-	
-	//ke table alat
+
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "paket_perawatan_alat",
-				joinColumns = {@JoinColumn(name = "id_paket_perawatan")},
-				inverseJoinColumns = {@JoinColumn(name = "id_alat")})
+	@JoinTable(name = "paket_perawatan_alat", joinColumns = { @JoinColumn(name = "id_paket_perawatan") }, inverseJoinColumns = { @JoinColumn(name = "id_alat") })
 	private Set<Alat> alat = new HashSet<Alat>();
-	
-	//ke table pelanggan_paket_perawatan
-	@OneToMany(mappedBy="paketPerawatan")
-	private Set<PelangganPaketPerawatan> pelangganPaketPerawatan;
-	
+
+	@ManyToMany(mappedBy = "paketPerawatan")
+	private Set<Pelanggan> pelanggan = new HashSet<Pelanggan>();
+
+	@OneToMany(mappedBy = "paketPerawatan")
+	private Set<PelangganPaketPerawatan> pelangganPaketPerawatans;
+
 	public Integer getId() {
 		return id;
 	}
@@ -73,11 +65,11 @@ public class PaketPerawatan implements Serializable {
 		this.namaPaketPerawatan = namaPaketPerawatan;
 	}
 
-	public Integer getHarga() {
+	public Double getHarga() {
 		return harga;
 	}
 
-	public void setHarga(Integer harga) {
+	public void setHarga(Double harga) {
 		this.harga = harga;
 	}
 
@@ -105,13 +97,21 @@ public class PaketPerawatan implements Serializable {
 		this.alat = alat;
 	}
 
-	public Set<PelangganPaketPerawatan> getPelangganPaketPerawatan() {
-		return pelangganPaketPerawatan;
+	public Set<PelangganPaketPerawatan> getPelangganPaketPerawatans() {
+		return pelangganPaketPerawatans;
 	}
 
-	public void setPelangganPaketPerawatan(
-			Set<PelangganPaketPerawatan> pelangganPaketPerawatan) {
-		this.pelangganPaketPerawatan = pelangganPaketPerawatan;
+	public void setPelangganPaketPerawatans(
+			Set<PelangganPaketPerawatan> pelangganPaketPerawatans) {
+		this.pelangganPaketPerawatans = pelangganPaketPerawatans;
 	}
-	
+
+	public Set<Pelanggan> getPelanggan() {
+		return pelanggan;
+	}
+
+	public void setPelanggan(Set<Pelanggan> pelanggan) {
+		this.pelanggan = pelanggan;
+	}
+
 }

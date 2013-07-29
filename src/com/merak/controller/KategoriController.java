@@ -21,7 +21,7 @@ public class KategoriController {
 	
 	//LIST Kategori
 	@RequestMapping("kategori/list")
-	public String list(ModelMap modelMap){
+	public String listKategori(ModelMap modelMap){
 		List<Kategori> kategori = kategoriService.listKategori();
 		modelMap.put("kategori", kategori);
 		return "/master/kategori/list";
@@ -29,20 +29,20 @@ public class KategoriController {
 		
 	//ADD Kategori
 	@RequestMapping(value = "kategori/add")
-	public String add() {
+	public String addKategori() {
 		return "/master/kategori/add";
 	}
 		
 	//SAVE Kategori
 	@RequestMapping(value = "kategori/add", method = RequestMethod.POST)
-	public String save(@ModelAttribute Kategori kategori) {
+	public String saveKategori(@ModelAttribute Kategori kategori) {
 		kategoriService.save(kategori);
 		return "redirect:list";
 	}
 		
 	// FIND BY ID : Kategori
 	@RequestMapping(value = "kategori/detail", method = RequestMethod.GET)
-	public String open(@ModelAttribute Kategori kategori, ModelMap modelMap) {
+	public String openKategori(@ModelAttribute Kategori kategori, ModelMap modelMap) {
 		kategori = kategoriService.getKategoriById(kategori.getId());
 		modelMap.put("kategori", kategori);
 		return "/master/kategori/detail";
@@ -50,14 +50,14 @@ public class KategoriController {
 			
 	// UPDATE Kategori
 	@RequestMapping(value = "kategori/detail", method = RequestMethod.POST)
-	public String update(@ModelAttribute Kategori kategori) {
+	public String updateKategori(@ModelAttribute Kategori kategori) {
 		kategoriService.save(kategori);
 		return "redirect:list";
 	}
 		
 	//DELETE Kategori
 	@RequestMapping(value = "kategori/delete")
-	public String delete(@ModelAttribute Kategori kategori){
+	public String deleteKategori(@ModelAttribute Kategori kategori){
 		kategoriService.delete(kategori);
 		return "redirect:list";
 	}

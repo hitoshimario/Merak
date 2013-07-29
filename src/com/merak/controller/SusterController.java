@@ -11,58 +11,54 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.merak.entity.Suster;
 import com.merak.service.SusterService;
-import com.merak.util.IdGenerator;
 
 @Controller
 @RequestMapping(value="master/*")
 public class SusterController {
 
 	@Autowired
-	protected SusterService susterService;
+	private SusterService susterService;
 	
-	//LIST Suster
+	//List Dokter
 	@RequestMapping("suster/list")
-	public String list(ModelMap modelMap){
+	public String listDokter(ModelMap modelMap){
 		List<Suster> suster = susterService.listSuster();
 		modelMap.put("suster", suster);
 		return "/master/suster/list";
 	}
 	
-	//ADD Suster
+	//Add Dokter
 	@RequestMapping(value = "suster/add")
-	public String add(ModelMap modelMap) {
-		IdGenerator idGenerator = new IdGenerator();
-		modelMap.put("idGenerator", idGenerator.getNipSuster());
-		return "/master/suster/add";
+	public String addSuster(){
+		return "/master/suster/list";
 	}
 	
-	//SAVE Suster
-	@RequestMapping(value = "suster/add", method = RequestMethod.POST)
-	public String save(@ModelAttribute Suster suster) {
+	//Save Dokter
+	@RequestMapping(value="suster/add", method = RequestMethod.POST)
+	public String saveSuster(@ModelAttribute Suster suster){
 		susterService.save(suster);
 		return "redirect:list";
 	}
 	
-	//FIND BY ID : Suster
-	@RequestMapping(value = "suster/detail", method = RequestMethod.GET)
-	public String open(@ModelAttribute Suster suster, ModelMap modelMap) {
+	//Find Dokter
+	@RequestMapping(value="suster/detail", method = RequestMethod.GET)
+	public String openDokter(@ModelAttribute Suster suster, ModelMap modelMap){
 		suster = susterService.getSusterById(suster.getId());
 		modelMap.put("suster", suster);
 		return "/master/suster/detail";
 	}
 	
-	// UPDATE Suster
+	//Update Dokter
 	@RequestMapping(value = "suster/detail", method = RequestMethod.POST)
-	public String update(@ModelAttribute Suster suster) {
+	public String updateSuster(@ModelAttribute Suster suster) {
 		susterService.save(suster);
 		return "redirect:list";
 	}
 	
-	//DELETE Suster
+	//DELETE Dokter
 	@RequestMapping(value = "suster/delete")
-	public String delete(@ModelAttribute Suster suster){
+	public String deleteDokter(@ModelAttribute Suster suster){
 		susterService.delete(suster);
 		return "redirect:list";
 	}
-	
 }

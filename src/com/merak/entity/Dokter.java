@@ -13,49 +13,47 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "dokter")
-public class Dokter implements Serializable {
-
-	/**
-	 * 
-	 */
+@Table(name="dokter")
+public class Dokter implements Serializable{
 	private static final long serialVersionUID = 1L;
+
+	public Dokter(){}
 	
 	@Id
 	@GeneratedValue
 	@Column(name="id")
-	private Integer id;
+	Integer id;
 	
 	@Column(name="nip_dokter")
-	private String nipDokter;
+	String nipDokter;
 	
 	@Column(name="nama_awal")
-	private String namaAwal;
+	String namaAwal;
 	
 	@Column(name="nama_akhir")
-	private String namaAkhir;
-	
-	@Column(name="jns_kelamin")
-	private int jnsKelamin;
+	String namaAkhir;
 	
 	@Column(name="tgl_lahir")
-	private Date tglLahir;
+	Date tglLahir;
 	
 	@Column(name="tmp_lahir")
-	private String tmpLahir;
+	String tmpLahir;
 	
 	@Column(name="alamat")
-	private String alamat;
+	String alamat;
 	
 	@Column(name="telepon")
-	private String telepon;
+	String telepon;
 	
 	@Column(name="email")
-	private String email;
+	String email;
 	
-	@ManyToMany(mappedBy = "dokter")
-    private Set<Perawatan> perawatan = new HashSet<Perawatan>();
+	@Column(name="jns_kelamin")
+	Integer jnsKelamin;
 
+/*	@ManyToMany(mappedBy="dokter")
+	private Set<Perawatan> perawatan = new HashSet<Perawatan>();*/
+	
 	public Integer getId() {
 		return id;
 	}
@@ -86,14 +84,6 @@ public class Dokter implements Serializable {
 
 	public void setNamaAkhir(String namaAkhir) {
 		this.namaAkhir = namaAkhir;
-	}
-
-	public int getJnsKelamin() {
-		return jnsKelamin;
-	}
-
-	public void setJnsKelamin(int jnsKelamin) {
-		this.jnsKelamin = jnsKelamin;
 	}
 
 	public Date getTglLahir() {
@@ -136,12 +126,20 @@ public class Dokter implements Serializable {
 		this.email = email;
 	}
 
-	public Set<Perawatan> getPerawatan() {
+	public Integer getJnsKelamin() {
+		return jnsKelamin;
+	}
+
+	public void setJnsKelamin(Integer jnsKelamin) {
+		this.jnsKelamin = jnsKelamin;
+	}
+
+/*	public Set<Perawatan> getPerawatan() {
 		return perawatan;
 	}
 
 	public void setPerawatan(Set<Perawatan> perawatan) {
 		this.perawatan = perawatan;
-	}
-	
+	}*/
+
 }

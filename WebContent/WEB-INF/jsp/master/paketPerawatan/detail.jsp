@@ -6,8 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Detail Paket Perawatan</title>
-<script type="text/javascript" src='<c:url value="/resources/js/jquery-1.8.3.js"/>'></script> 
-<script type="text/javascript" src='<c:url value="/resources/js/jquery-ui-1.9.2.custom.js.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/resources/script/jquery/jquery-1.8.3.js"/>'></script> 
+<script type="text/javascript" src='<c:url value="/resources/script/jquery/jquery-ui-1.9.2.custom.js.js"/>'></script>
 <script type="text/javascript">
 	var counter=0;
 	$(document).ready(function(){
@@ -109,7 +109,7 @@
 			</div>
 			<div class="control-group">
 				<div class="controls">
-					<button class="btn btn-small" type="submit">Update Paket Perawatan</button>
+					<button class="btn btn-small" type="submit">Update Paket</button>
 				</div>
 			</div>
 		</form>

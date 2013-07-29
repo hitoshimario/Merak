@@ -15,60 +15,50 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="perawatan")
+@Table(name = "perawatan")
 public class Perawatan implements Serializable {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	
+
+	public Perawatan() {
+	}
+
 	@Id
 	@GeneratedValue
 	@Column(name = "id")
-	private int id;
-	
+	private Integer id;
+
 	@Column(name = "tgl_perawatan")
 	private Date tglPerawatan;
-	
+
 	@Column(name = "jam_mulai")
 	private Time jamMulai;
-	
+
 	@Column(name = "jam_akhir")
 	private Time jamAkhir;
-	
-	@Column(name = "visit_ke")
-	private int visitKe;
-	
-	@ManyToOne
-	@JoinColumn(name = "id_pelanggan_paket_perawatan")
-	private PelangganPaketPerawatan pelangganPaketPerawatan;
-	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "perawatan_dokter",
-				joinColumns = {@JoinColumn(name = "id_perawatan")},
-				inverseJoinColumns = {@JoinColumn(name = "id_dokter")})
-	private Set<Dokter> dokter = new HashSet<Dokter>();
-	
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	@JoinTable(name = "perawatan_suster",
-				joinColumns = {@JoinColumn(name = "id_perawatan")},
-				inverseJoinColumns = {@JoinColumn(name = "id_suster")})
-	private Set<Suster> suster = new HashSet<Suster>();
-	
-	@OneToMany(mappedBy = "perawatan")
-	private Set<RekamMedik> rekamMedik;
 
-	public int getId() {
+	@Column(name = "visit_ke")
+	private Integer visitKe;
+
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name = "perawatan_dokter", joinColumns = { @JoinColumn(name = "id_perawatan") }, inverseJoinColumns = { @JoinColumn(name = "id_dokter") })
+	private Set<Dokter> dokter = new HashSet<Dokter>();
+
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@JoinTable(name = "perawatan_suster", joinColumns = { @JoinColumn(name = "id_perawatan") }, inverseJoinColumns = { @JoinColumn(name = "id_suster") })
+	private Set<Suster> suster = new HashSet<Suster>();
+
+	@Column(name="id_pelanggan_paket_perawatan")
+	private int pelangganPaketPerawatan;
+	
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -96,21 +86,12 @@ public class Perawatan implements Serializable {
 		this.jamAkhir = jamAkhir;
 	}
 
-	public int getVisitKe() {
+	public Integer getVisitKe() {
 		return visitKe;
 	}
 
-	public void setVisitKe(int visitKe) {
+	public void setVisitKe(Integer visitKe) {
 		this.visitKe = visitKe;
-	}
-
-	public PelangganPaketPerawatan getPelangganPaketPerawatan() {
-		return pelangganPaketPerawatan;
-	}
-
-	public void setPelangganPaketPerawatan(
-			PelangganPaketPerawatan pelangganPaketPerawatan) {
-		this.pelangganPaketPerawatan = pelangganPaketPerawatan;
 	}
 
 	public Set<Dokter> getDokter() {
@@ -129,12 +110,13 @@ public class Perawatan implements Serializable {
 		this.suster = suster;
 	}
 
-	public Set<RekamMedik> getRekamMedik() {
-		return rekamMedik;
+	public int getPelangganPaketPerawatan() {
+		return pelangganPaketPerawatan;
 	}
 
-	public void setRekamMedik(Set<RekamMedik> rekamMedik) {
-		this.rekamMedik = rekamMedik;
+	public void setPelangganPaketPerawatan(
+			int pelangganPaketPerawatan) {
+		this.pelangganPaketPerawatan = pelangganPaketPerawatan;
 	}
-	
+
 }

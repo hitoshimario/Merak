@@ -7,8 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Paket Perawatan</title>
 <link type="text/css" href='<c:url value = "/resources/css/demo_table.css"/>' rel="stylesheet" />
-<script type="text/javascript" src='<c:url value="/resources/js/jquery-1.8.3.js"/>'></script>
-<script type="text/javascript" src='<c:url value="/resources/js/jquery.dataTables.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/resources/script/jquery/jquery-1.8.3.js"/>'></script>
+<script type="text/javascript" src='<c:url value="/resources/script/jquery/jquery.dataTables.js"/>'></script>
 <!-- Paging Table -->
 <script type="text/javascript" charset="utf-8">
 			$(document).ready(function() {
@@ -31,7 +31,7 @@
 	<fieldset>
 		<legend>Paket Perawatan</legend>
 		<a href="<c:url value="/master/paketPerawatan/add"/>">
-			<button class="btn btn-small" type="button">Add Paket Perawatan</button>
+			<button class="btn btn-small" type="button">Add Paket</button>
 		</a>
 		<div style="margin:15px 0;"></div>
 		<table class="display" id="example">
@@ -66,8 +66,8 @@
 							</c:forEach>
 							</ul>
 						</td>
-						<td align="center">${paketPerawatan.harga}</td>
-						<td align="center">${paketPerawatan.durasi}</td>
+						<td>${paketPerawatan.harga}</td>
+						<td>${paketPerawatan.durasi}</td>
 						<td align="center"><a href="<c:url value="/master/paketPerawatan/detail?id=${paketPerawatan.id}"/>"><i class="icon-pencil"></i></a></td>
 						<td align="center"><a href="<c:url value="/master/paketPerawatan/delete?id=${paketPerawatan.id}"/>" onClick="return confirmDelete()"><i class="icon-remove"></i></a></td>
 					</tr>

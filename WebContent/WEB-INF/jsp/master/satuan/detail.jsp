@@ -25,10 +25,23 @@
 			</div>
 			<div class="control-group">
 				<div class="controls">
-					<button class="btn btn-small" type="submit">Update Satuan</button>
+					<button class="btn btn-small" type="submit">Update Kategori</button>
 				</div>
 			</div>
 		</form>
+		<%-- <form name="form" action="<c:url value="detail"/>" method="post">
+			<table>
+				<tr>
+					<td>Id</td><td><input type="text" id="id" name="id" value="${satuan.id}" readonly="readonly" /></td>
+				</tr>
+				<tr>
+					<td>Nama Satuan</td><td><input type="text" id="namaSatuan" name="namaSatuan" value="${satuan.namaSatuan}" /></td>
+				</tr>
+				<tr>
+					<td class="tombol"><input type="submit" name="submit" value="Save" /></td>
+				</tr>
+			</table>
+		</form> --%>
 	</fieldset>
 </body>
 </html>

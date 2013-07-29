@@ -27,7 +27,6 @@ public class Kategori implements Serializable {
 	@Column(name="nama_kategori")
 	private String namaKategori;
 	
-	//relasi ke table produk
 	@OneToMany(mappedBy="kategori")
 	private Set<Produk> produk;
 	

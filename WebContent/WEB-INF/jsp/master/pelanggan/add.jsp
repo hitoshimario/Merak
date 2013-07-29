@@ -118,6 +118,16 @@
 						  <input type="text" id="email" name="email" />
 					</div>
 				</div>
+		</fieldset>
+		<fieldset>
+			<legend>Paket Perawatan</legend>
+				<c:forEach var="paketPerawatan" items="${paketPerawatan}">
+					<div class="control-group">
+						<div class="controls">
+							<input type="radio" id="paketPerawatan" name="paketPerawatan" value="${paketPerawatan.id}" />${paketPerawatan.namaPaketPerawatan}
+						</div>
+					</div>
+				</c:forEach>
 				<div class="control-group">
 					<div class="controls">
 						<button class="btn btn-small" type="submit">Add Pelanggan</button>
